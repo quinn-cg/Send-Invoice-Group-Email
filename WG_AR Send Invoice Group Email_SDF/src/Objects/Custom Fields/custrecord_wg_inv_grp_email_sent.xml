@@ -1,0 +1,35 @@
+<othercustomfield scriptid="custrecord_wg_inv_grp_email_sent">
+  <accesslevel>2</accesslevel>
+  <applyformatting>F</applyformatting>
+  <checkspelling>F</checkspelling>
+  <defaultchecked>F</defaultchecked>
+  <defaultselection></defaultselection>
+  <defaultvalue></defaultvalue>
+  <description>This field is a checkbox that is marked when the associated scheduled automation is run to send an email to the customer alerting them of the group invoice.</description>
+  <displayheight></displayheight>
+  <displaytype>NORMAL</displaytype>
+  <displaywidth></displaywidth>
+  <dynamicdefault></dynamicdefault>
+  <encryptatrest>F</encryptatrest>
+  <fieldtype>CHECKBOX</fieldtype>
+  <help>This field is a checkbox that is marked when the associated scheduled automation is run to send an email to the customer alerting them of the group invoice.</help>
+  <isformula>F</isformula>
+  <ismandatory>F</ismandatory>
+  <label>Customer Email Sent</label>
+  <linktext></linktext>
+  <maxlength></maxlength>
+  <maxvalue></maxvalue>
+  <minvalue></minvalue>
+  <onparentdelete></onparentdelete>
+  <rectype>-4011</rectype>
+  <searchcomparefield></searchcomparefield>
+  <searchdefault></searchdefault>
+  <searchlevel>2</searchlevel>
+  <selectrecordtype></selectrecordtype>
+  <showhierarchy>F</showhierarchy>
+  <showinlist>F</showinlist>
+  <sourcefilterby></sourcefilterby>
+  <sourcefrom></sourcefrom>
+  <sourcelist></sourcelist>
+  <storevalue>T</storevalue>
+</othercustomfield>

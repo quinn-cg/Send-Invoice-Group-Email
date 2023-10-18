@@ -1,0 +1,60 @@
+<mapreducescript scriptid="customscript_wg_auto_inv_grp_email_mr">
+  <description>This script is designed to run every 15 minutes and send an email to all customers who have an invoice group record where the &quot;Customer Email Sent&quot; field is marked as false.</description>
+  <isinactive>F</isinactive>
+  <name>WG_AR Auto Inv Grp Email MR</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/Connor Group/NS Invoicing Automation/Automated Invoice Group Email/WG_AR Auto Inv Grp Email MR.js]</scriptfile>
+  <scriptcustomfields>
+    <scriptcustomfield scriptid="custscript_inv_details_search">
+      <accesslevel>2</accesslevel>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>This parameters stores the invoice search that is generated into a CSV report sent in the customer email.</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>SELECT</fieldtype>
+      <help>This parameters stores the invoice search that is generated into a CSV report sent in the customer email.</help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <label>Invoice Details Search</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-119</selectrecordtype>
+      <setting></setting>
+      <storevalue>T</storevalue>
+    </scriptcustomfield>
+  </scriptcustomfields>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_wg_auto_inv_grp_email_mr_1">
+      <buffersize>1</buffersize>
+      <concurrencylimit>1</concurrencylimit>
+      <custscript_inv_details_search>[scriptid=customsearch_wg_invoice_details]</custscript_inv_details_search>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <queueallstagesatonce>T</queueallstagesatonce>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>SCHEDULED</status>
+      <title>WG_AR Auto Inv Grp Email MR 1</title>
+      <yieldaftermins>60</yieldaftermins>
+      <recurrence>
+        <daily>
+          <everyxdays>1</everyxdays>
+          <repeat>PT15M</repeat>
+          <startdate>2023-10-18</startdate>
+          <starttime>01:00:00Z</starttime>
+        </daily>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</mapreducescript>
