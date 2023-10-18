@@ -1,4 +1,46 @@
 <manifest projecttype="ACCOUNTCUSTOMIZATION">
   <projectname>WG_AR Send Invoice Group Email_SDF</projectname>
   <frameworkversion>1.0</frameworkversion>
+  <dependencies>
+    <features>
+      <feature required="true">SERVERSIDESCRIPTING</feature>
+      <feature required="true">ADVANCEDPRINTING</feature>
+      <feature required="false">CRM</feature>
+      <feature required="false">CREATESUITEBUNDLES</feature>
+    </features>
+    <objects>
+      <object>custbody_11187_pref_entity_bank</object>
+      <object>custbody_suitel10n_jp_paydetails</object>
+      <object>custbody_11724_pay_bank_fees</object>
+      <object>custcol_wg_subscription_po_number</object>
+      <object>customrecordzab_subscription_item</object>
+      <object>custbody_5185_idsnumber</object>
+      <object>custbody_15529_emp_entity_bank</object>
+      <object>custbody_wg_order_type</object>
+      <object>custcol_wg_pos_partner_acc</object>
+      <object>customlist_jp_journaltype_list</object>
+      <object>customrecord_wg_order_type</object>
+      <object>customlist_lems_status</object>
+      <object>custbody_jp_journal_type</object>
+      <object>custbody_15699_exclude_from_ep_process</object>
+      <object>custbody_5185_idslink</object>
+      <object>custbody_15529_vendor_entity_bank</object>
+      <object>custcol_wg_item_display_name</object>
+      <object>customrecord_2663_entity_bank_details</object>
+      <object>custcol_wg_serial_number_ops</object>
+      <object>custbody_4392_includeids</object>
+      <object>custbody_if_lems_status</object>
+      <object>custcol_wg_subscription_contract_id</object>
+      <object>custbody_11724_bank_fee</object>
+      <object>custbody_10184_customer_entity_bank</object>
+    </objects>
+    <applications>
+      <application id="com.suitesuccess.erpcore">
+        <objects>
+          <object>customrecord_atlas_inv_adj_reasn</object>
+          <object>custbody_atlas_inv_adj_reason</object>
+        </objects>
+      </application>
+    </applications>
+  </dependencies>
 </manifest>

@@ -124,10 +124,10 @@
       <allpartners>F</allpartners>
       <allroles>T</allroles>
       <audslctrole></audslctrole>
-      <custscript_inv_adv_pdf>[scriptid=custtmpl_cg_wg_inv_pdf]</custscript_inv_adv_pdf>
-      <custscript_inv_details_csv_search>[scriptid=customsearch_wg_invoice_details]</custscript_inv_details_csv_search>
-      <custscript_inv_grp_adv_pdf>[scriptid=custtmpl_wg_inv_grp_detailed_view]</custscript_inv_grp_adv_pdf>
-      <custscript_inv_grp_email_temp>[ACCOUNT_SPECIFIC_VALUE]</custscript_inv_grp_email_temp>
+      <custscript_inv_adv_pdf></custscript_inv_adv_pdf>
+      <custscript_inv_details_csv_search></custscript_inv_details_csv_search>
+      <custscript_inv_grp_adv_pdf></custscript_inv_grp_adv_pdf>
+      <custscript_inv_grp_email_temp></custscript_inv_grp_email_temp>
       <eventtype></eventtype>
       <executioncontext>ACTION|ADVANCEDREVREC|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CONSOLRATEADJUSTOR|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OTHER|PAYMENTGATEWAY|PAYMENTPOSTBACK|PLATFORMEXTENSION|PORTLET|PROMOTIONS|RECORDACTION|RESTLET|RESTWEBSERVICES|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WEBSERVICES|WORKBOOKBUILDER|WORKFLOW</executioncontext>
       <isdeployed>T</isdeployed>
