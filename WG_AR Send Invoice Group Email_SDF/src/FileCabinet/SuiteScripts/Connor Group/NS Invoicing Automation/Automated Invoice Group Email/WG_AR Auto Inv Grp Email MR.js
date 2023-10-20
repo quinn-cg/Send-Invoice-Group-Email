@@ -269,13 +269,6 @@ define(['N/compress', 'N/email', 'N/error', 'N/file', 'N/format/i18n', 'N/query'
                     number: queryResults.amountdue
                 })
 
-                var dueDate = new Date(queryResults.duedate)
-
-                // Aggregate Variable for Date
-                var day = dueDate.getDate()
-                var month = dueDate.getMonth() + 1 // increase by one since months start with base 0
-                var year = dueDate.getFullYear()
-
                 var emailSubject = `WatchGuard Invoice #${queryResults.invoicegroupnumber} for ${queryResults.customer} - ${queryResults.trandate}`
 
                 var emailBody =  `<span style="font-size:12pt"><span style="text-autospace:none"><span style="font-family:"Times New Roman",serif"><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif">Hello,</span></span></span></span></span><br />
