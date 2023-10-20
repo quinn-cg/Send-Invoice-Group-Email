@@ -246,15 +246,18 @@ define(['N/compress', 'N/email', 'N/error', 'N/file', 'N/format/i18n', 'N/query'
                 var queryResults = query.runSuiteQL({
                     query: `
                         SELECT
-                            invoiceGroupNumber
-                            , BUILTIN.DF(customer) customer
-                            , NVL(amountDue, 0) amountdue
-                            , BUILTIN.DF(currency) currency
-                            , dueDate
+                            ig.invoiceGroupNumber
+                            , BUILTIN.DF(ig.customer) customer
+                            , NVL(ig.amountDue, 0) amountdue
+                            , BUILTIN.DF(ig.currency) currency
+                            , ig.dueDate
+                            , ig.tranDate
+                            , s.name subsidiary
                         FROM
-                            invoiceGroup
+                            invoiceGroup ig
+                            JOIN subsidiary s ON ig.subsidiary = s.id
                         WHERE
-                            id = ?`
+                            ig.id = ?`
                     , params: [rec.id]
                 }).asMappedResults()[0]
 
@@ -273,15 +276,27 @@ define(['N/compress', 'N/email', 'N/error', 'N/file', 'N/format/i18n', 'N/query'
                 var month = dueDate.getMonth() + 1 // increase by one since months start with base 0
                 var year = dueDate.getFullYear()
 
-                var emailSubject = `WatchGuard Technologies Inc. Invoice #${queryResults.invoicegroupnumber}`
+                var emailSubject = `WatchGuard Invoice #${queryResults.invoicegroupnumber} for ${queryResults.customer} - ${queryResults.trandate}`
 
-                var emailBody = 
-                `Hi ${queryResults.customer},
-
-                Please find your invoice ${queryResults.invoicegroupnumber}. The amount outstanding, ${amtDueFormatted} ${queryResults.currency}, is due on ${month}/${day}/${year}.
-
-                Thank you for your Business,
-                WatchGuard Team`
+                var emailBody =  `<span style="font-size:12pt"><span style="text-autospace:none"><span style="font-family:"Times New Roman",serif"><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif">Hello,</span></span></span></span></span><br />
+               <br />
+               <span style="font-size:12pt"><span style="text-autospace:none"><span style="font-family:"Times New Roman",serif"><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif">Attached you’ll find a PDF file containing your </span></span></span></span></span>${queryResults.subsidiary} invoice group <strong>${queryResults.invoicegroupnumber}</strong>. The amount outstanding, ${amtDueFormatted} ${queryResults.currency}, is due on ${queryResults.duedate}.<br />
+               <br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><b><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif"><span style="color:red">Note</span></span></span></b><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif">: Please confirm receipt of this email by responding with the word “received” in the subject line.  This is unnecessary if your account will automatically reply once you have read this email.</span></span></span></span><br />
+               <br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><span style="font-size:10.0pt"><span style="font-family:"Arial",sans-serif">Thank you and have a good day.</span></span></span></span><br />
+               <br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><b><span style="font-size:8.0pt"><span style="font-family:"Verdana",sans-serif">Best Regards,</span></span></b></span></span><br />
+               <br />
+               <br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><b><span style="font-size:9.0pt"><span style="font-family:"Arial",sans-serif"><span style="color:black">WatchGuard Billing Team</span></span></span></b><br />
+               <span style="font-size:9.0pt"><span style="font-family:"Arial",sans-serif"><span style="color:gray">WatchGuard Technologies, Inc. |</span></span></span><span style="font-size:9.0pt"><span style="font-family:"Arial",sans-serif"><span style="color:black"> <a href="http://www.watchguard.com/" style="color:blue; text-decoration:underline"><span style="color:gray">www.watchguard.com</span></a> </span></span></span></span></span><br />
+               <br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><span style="font-size:9.0pt"><span style="font-family:"Arial",sans-serif"><span style="color:gray"><a href="mailto:AccountsReceivable@watchguard.com" style="color:blue; text-decoration:underline">AccountsReceivable@watchguard.com</a></span></span></span></span></span><br />
+               <span style="font-size:12pt"><span style="font-family:"Times New Roman",serif"><span style="font-size:8.0pt"><span style="font-family:"Verdana",sans-serif"><span style="color:gray"><span style="letter-spacing:.2pt">206.613.6600 Corporate Headquarters</span></span></span></span><br />
+               <br />
+               <span style="font-size:8.0pt"><span style="font-family:"Courier New""><span style="color:gray"><span style="letter-spacing:.2pt">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span></span></span><br />
+               <b><span style="font-size:8.0pt"><span style="font-family:"Verdana",sans-serif"><span style="letter-spacing:.2pt">Get Red. Get Secu<span style="color:red">red</span>.</span></span></span></b></span></span>`
         
                 return {emailSubject, emailBody}
     
